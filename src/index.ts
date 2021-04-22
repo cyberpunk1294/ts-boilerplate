@@ -1,7 +1,18 @@
-const main = (argc: number, argv: string[]): void => {
-  console.log(`Hello World ${argc}, ${JSON.stringify(argv, undefined, 2)}`)
+void (async (): Promise<void> => {
+  let code = 0;
 
-  console.info('Program executed with code 0.');
-}
+  try {
+    await new Promise((resolve) => {
+	console.log('Hello World!')
 
-main(process.argv.length, process.argv);
+	resolve()
+    });
+  } catch (err) {
+    console.error(err);
+
+    code = 1;
+  }
+
+  process.exit(code);
+})();
+
